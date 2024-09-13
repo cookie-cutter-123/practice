@@ -7,22 +7,19 @@ updates:
       interval: "weekly" # Check for updates once a week
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "dependency"
-    pull-request-branch-name:
-      prefix: "dependabot/maven"
+      prefix: "dependencies"
     labels:
       - "dependencies"
       - "automated-update"
+
   # Check for updates to GitHub Actions
   - package-ecosystem: "github-actions"
-    directory: "/" # Root directory for workflows
+    directory: "/.github/workflows" # Location of the GitHub Actions workflows
     schedule:
       interval: "weekly" # Check for updates once a week
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 10
     commit-message:
       prefix: "ci"
-    pull-request-branch-name:
-      prefix: "dependabot/actions"
     labels:
       - "ci"
       - "github-actions"
