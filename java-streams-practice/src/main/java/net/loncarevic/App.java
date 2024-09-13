@@ -58,15 +58,13 @@ public class App {
         .forEach(System.out::println);
 
     // Filter certain values
-    Stream.of(2, 6, 9, 0, 1, 3)
-        .filter(x -> x > 3)
-        .forEach(System.out::println);
+    Stream.of(2, 6, 9, 0, 1, 3).filter(x -> x > 3).forEach(System.out::println);
 
     // Streams cannot be reused. A terminal operation closes the stream.
     IntStream intStream = IntStream.range(1, 10);
     System.out.println(intStream.sum());
     // This would throw the error: stream has already been operated upon or closed
-//    System.out.println(intStream.count());
+    //    System.out.println(intStream.count());
   }
 
   static void task4() {
