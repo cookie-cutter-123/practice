@@ -1,0 +1,28 @@
+version: 2
+updates:
+  # Check for updates to Maven dependencies
+  - package-ecosystem: "maven"
+    directory: "/" # Location of pom.xml
+    schedule:
+      interval: "weekly" # Check for updates once a week
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "dependency"
+    pull-request-branch-name:
+      prefix: "dependabot/maven"
+    labels:
+      - "dependencies"
+      - "automated-update"
+  # Check for updates to GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/" # Root directory for workflows
+    schedule:
+      interval: "weekly" # Check for updates once a week
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+    pull-request-branch-name:
+      prefix: "dependabot/actions"
+    labels:
+      - "ci"
+      - "github-actions"
