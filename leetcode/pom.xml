@@ -8,9 +8,9 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>net.loncarevic</groupId>
-  <artifactId>java-streams-practice</artifactId>
+  <artifactId>leetcode</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>java-streams-practice</name>
+  <name>leetcode</name>
   <url>https://maven.apache.org</url>
   <dependencies>
   </dependencies>
