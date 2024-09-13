@@ -19,7 +19,7 @@ updates:
       interval: "weekly" # Check for updates once a week
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "ci"
+      prefix: "workflows"
     labels:
-      - "ci"
-      - "github-actions"
+      - "workflows"
+      - "automated-update"
