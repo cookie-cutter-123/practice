@@ -1,0 +1,62 @@
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# IntelliJ
+.idea
+*.ipr
+*.iml
+*.iws
+
+# NetBeans
+nb-configuration.xml
+
+# Visual Studio Code
+.vscode
+
+# OSX
+.DS_Store
+
+# Vim
+*.swp
+*.swo
+
+# Patch
+*.orig
+*.rej
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+credentials.json
+.mvn/wrapper/maven-wrapper.jar
+
+# Local config
+.env
+
+# Node
+node_modules/
+
+# Legacy Antora docs
+docs/
+
+# Jbang wrapper
+.jbang/
+
+# Allure report
+.allure/
+
+# GitHub secrets
+/secrets/secret.json
+
+# Generated files
+/src/main/gen/
+/reportgenerator/src/main/gen/
+
+# Logs
+/service/logs/
