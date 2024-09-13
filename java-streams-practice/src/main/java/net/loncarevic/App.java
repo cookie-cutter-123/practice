@@ -1,3 +1,5 @@
+package net.loncarevic;
+
 import java.util.*;
 import java.util.stream.*;
 
@@ -47,9 +49,24 @@ public class App {
     /*
      * Stream methods: map filter
      */
-    Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).map(x -> x * x).forEach(System.out::println);
+
+    // Map can be chained to a map, since it is an intermediate method.
+    // On the other hand, forEach is a terminal method, it cannot be chained.
+    Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        .map(x -> x * x)
+        .map(x -> x - 2)
+        .forEach(System.out::println);
+
+    // Filter certain values
+    Stream.of(2, 6, 9, 0, 1, 3)
+        .filter(x -> x > 3)
+        .forEach(System.out::println);
 
     // Streams cannot be reused. A terminal operation closes the stream.
+    IntStream intStream = IntStream.range(1, 10);
+    System.out.println(intStream.sum());
+    // This would throw the error: stream has already been operated upon or closed
+//    System.out.println(intStream.count());
   }
 
   static void task4() {
