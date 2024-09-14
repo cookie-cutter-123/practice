@@ -1,5 +1,9 @@
 package net.loncarevic;
 
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.*;
 
@@ -69,11 +73,27 @@ public class App {
 
   static void task4() {
     // Task 4: Understand the reduce method
+    System.out.println("Sum using reduce: " + Stream.of(1, 2, 3, 4)
+        .reduce(0, (a, b) -> a + b));
+    System.out.println("Product using reduce: " + Stream.of(1, 2, 3, 4)
+        .reduce(1, (a, b) -> a * b));
+    System.out.println("Custom operation using reduce: " + Stream.of(1, 2, 3, 4)
+        .reduce(0, (a, b) -> 2 * a + b));
+    System.out.println("String concatenation using reduce: " + Stream.of("A", "B", "C", "D")
+        .reduce("", (a, b) -> a + b));
 
   }
 
   static void task5() {
     // Task 5: Perform string operations on a stream
+    Stream.of("key_345", "key_198", "key_902")
+        .map(String::toUpperCase)
+        .forEach(System.out::println);
+    Stream.of("key_345", "key_198", "key_902")
+        .map(s -> s.split("_"))
+        .map(a -> a[1])
+        .mapToInt(Integer::parseInt)
+        .forEach(System.out::println);
 
   }
 
@@ -81,9 +101,49 @@ public class App {
 
   static void task6to7() {
     // Task 7: Explore the dataset with streams
+    class Row {
+      String daily_vaccinations;
+      String country;
+      Row(List list){
+        this.daily_vaccinations = (String) list.get(7);
+        this.country = (String) list.get(0);
+      }
+      public String toString(){
+        return country + ", " + daily_vaccinations;
+      }
+    }
+
+    try {
+      List<Row> records = new ArrayList<>();
+      System.out.println(System.getProperty("user.dir"));
+      BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(App.class.getResourceAsStream("/country_vaccinations.csv"))));
+
+      String line;
+      line = br.readLine();
+      while ((line = br.readLine()) != null) {
+        String[] values = line.split(",");
+        records.add(new Row(Arrays.asList(values)));
+      }
+      // Print the first 10 records
+      records.stream().limit(10).forEach(System.out::println);
+      // Skip all but the last 10 records
+      records.stream().skip((long) records.size() - 10).forEach(System.out::println);
+      // Print countries, but only once, using distinct
+      records.stream().map(x -> x.country).distinct().forEach(System.out::println);
+      // Print the number of rows in the dataset
+      System.out.println("Number of rows: " + records.stream().count());
+      // Print the number of nulls
+      System.out.println("Number of nulls: " +
+          records.stream().filter(x -> x.daily_vaccinations.isEmpty()).count());
+
+      // TODO Minute 4 of the last video
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
   }
 
   public static void main(String[] args) {
-    task3();
+    task6to7();
   }
 }
