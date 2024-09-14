@@ -1,11 +1,10 @@
 package net.loncarevic;
 
-import javax.swing.*;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.*;
+import javax.swing.*;
 
 public class App {
 
@@ -73,15 +72,13 @@ public class App {
 
   static void task4() {
     // Task 4: Understand the reduce method
-    System.out.println("Sum using reduce: " + Stream.of(1, 2, 3, 4)
-        .reduce(0, (a, b) -> a + b));
-    System.out.println("Product using reduce: " + Stream.of(1, 2, 3, 4)
-        .reduce(1, (a, b) -> a * b));
-    System.out.println("Custom operation using reduce: " + Stream.of(1, 2, 3, 4)
-        .reduce(0, (a, b) -> 2 * a + b));
-    System.out.println("String concatenation using reduce: " + Stream.of("A", "B", "C", "D")
-        .reduce("", (a, b) -> a + b));
-
+    System.out.println("Sum using reduce: " + Stream.of(1, 2, 3, 4).reduce(0, (a, b) -> a + b));
+    System.out.println("Product using reduce: " + Stream.of(1, 2, 3, 4).reduce(1, (a, b) -> a * b));
+    System.out.println(
+        "Custom operation using reduce: " + Stream.of(1, 2, 3, 4).reduce(0, (a, b) -> 2 * a + b));
+    System.out.println(
+        "String concatenation using reduce: "
+            + Stream.of("A", "B", "C", "D").reduce("", (a, b) -> a + b));
   }
 
   static void task5() {
@@ -94,7 +91,6 @@ public class App {
         .map(a -> a[1])
         .mapToInt(Integer::parseInt)
         .forEach(System.out::println);
-
   }
 
   // Task 6: Open the CSV dataset and perform basic stream operations
@@ -104,11 +100,13 @@ public class App {
     class Row {
       String daily_vaccinations;
       String country;
-      Row(List list){
+
+      Row(List list) {
         this.daily_vaccinations = (String) list.get(7);
         this.country = (String) list.get(0);
       }
-      public String toString(){
+
+      public String toString() {
         return country + ", " + daily_vaccinations;
       }
     }
@@ -116,7 +114,11 @@ public class App {
     try {
       List<Row> records = new ArrayList<>();
       System.out.println(System.getProperty("user.dir"));
-      BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(App.class.getResourceAsStream("/country_vaccinations.csv"))));
+      BufferedReader br =
+          new BufferedReader(
+              new InputStreamReader(
+                  Objects.requireNonNull(
+                      App.class.getResourceAsStream("/country_vaccinations.csv"))));
 
       String line;
       line = br.readLine();
@@ -133,14 +135,14 @@ public class App {
       // Print the number of rows in the dataset
       System.out.println("Number of rows: " + records.stream().count());
       // Print the number of nulls
-      System.out.println("Number of nulls: " +
-          records.stream().filter(x -> x.daily_vaccinations.isEmpty()).count());
+      System.out.println(
+          "Number of nulls: "
+              + records.stream().filter(x -> x.daily_vaccinations.isEmpty()).count());
 
       // TODO Minute 4 of the last video
     } catch (Exception e) {
       e.printStackTrace();
     }
-
   }
 
   public static void main(String[] args) {
