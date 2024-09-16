@@ -12,7 +12,7 @@
   <!-- Define properties section for version management -->
   <properties>
     <spotless.version>2.44.0.BETA2</spotless.version>
-    <junit.version>5.8.2</junit.version>
+    <junit.version>5.11.0</junit.version>
   </properties>
 
   <modules>
