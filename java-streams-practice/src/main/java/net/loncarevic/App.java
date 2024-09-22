@@ -145,17 +145,22 @@ public class App {
                   .mapToDouble(Double::parseDouble)
                   .sum());
 
-      records.stream().map(x -> x.country).distinct().forEach(x ->
-          {
-            System.out.println("Total vaccinations in " + x + " = "
-                + records.stream()
-                    .filter(y -> y.country.equals(x))
-                    .filter(y -> !y.daily_vaccinations.isEmpty())
-                    .map(y -> y.daily_vaccinations)
-                    .mapToDouble(Double::parseDouble)
-                    .sum());
-          }
-          );
+      records.stream()
+          .map(x -> x.country)
+          .distinct()
+          .forEach(
+              x -> {
+                System.out.println(
+                    "Total vaccinations in "
+                        + x
+                        + " = "
+                        + records.stream()
+                            .filter(y -> y.country.equals(x))
+                            .filter(y -> !y.daily_vaccinations.isEmpty())
+                            .map(y -> y.daily_vaccinations)
+                            .mapToDouble(Double::parseDouble)
+                            .sum());
+              });
     } catch (Exception e) {
       e.printStackTrace();
     }
