@@ -60,3 +60,6 @@ docs/
 
 # Logs
 /service/logs/
+
+# git-credential-manager
+/.git-credentials
