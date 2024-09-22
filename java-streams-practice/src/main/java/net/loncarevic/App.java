@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.*;
-import javax.swing.*;
 
 public class App {
 
@@ -21,10 +20,7 @@ public class App {
 
     integers.forEach(System.out::println);
 
-    integers.forEach(
-        x -> {
-          System.out.println("Custom forEach: " + x);
-        });
+    integers.forEach(x -> System.out.println("Custom forEach: " + x));
 
     Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).forEach(System.out::println);
     IntStream.range(1, 10).forEach(System.out::println);
@@ -72,7 +68,7 @@ public class App {
 
   static void task4() {
     // Task 4: Understand the reduce method
-    System.out.println("Sum using reduce: " + Stream.of(1, 2, 3, 4).reduce(0, (a, b) -> a + b));
+    System.out.println("Sum using reduce: " + Stream.of(1, 2, 3, 4).reduce(0, Integer::sum));
     System.out.println("Product using reduce: " + Stream.of(1, 2, 3, 4).reduce(1, (a, b) -> a * b));
     System.out.println(
         "Custom operation using reduce: " + Stream.of(1, 2, 3, 4).reduce(0, (a, b) -> 2 * a + b));
@@ -98,8 +94,8 @@ public class App {
   static void task6to7() {
     // Task 7: Explore the dataset with streams
     class Row {
-      String daily_vaccinations;
-      String country;
+      final String daily_vaccinations;
+      final String country;
 
       Row(List list) {
         this.daily_vaccinations = (String) list.get(7);
@@ -139,7 +135,27 @@ public class App {
           "Number of nulls: "
               + records.stream().filter(x -> x.daily_vaccinations.isEmpty()).count());
 
-      // TODO Minute 4 of the last video
+      // Summation
+      System.out.println(
+          "Total vactinations in Zimbabwe: "
+              + records.stream()
+                  .filter(x -> x.country.equals("Zimbabwe"))
+                  .filter(x -> !x.daily_vaccinations.isEmpty())
+                  .map(x -> x.daily_vaccinations)
+                  .mapToDouble(Double::parseDouble)
+                  .sum());
+
+      records.stream().map(x -> x.country).distinct().forEach(x ->
+          {
+            System.out.println("Total vaccinations in " + x + " = "
+                + records.stream()
+                    .filter(y -> y.country.equals(x))
+                    .filter(y -> !y.daily_vaccinations.isEmpty())
+                    .map(y -> y.daily_vaccinations)
+                    .mapToDouble(Double::parseDouble)
+                    .sum());
+          }
+          );
     } catch (Exception e) {
       e.printStackTrace();
     }
