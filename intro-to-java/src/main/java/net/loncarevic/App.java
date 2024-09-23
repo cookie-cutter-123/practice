@@ -5,7 +5,7 @@ public class App {
     primitiveDataTypes();
   }
 
-  public static void primitiveDataTypes(){
+  public static void primitiveDataTypes() {
     int width;
     int height;
     int area;
@@ -14,18 +14,18 @@ public class App {
     boolean result = true;
     int[] daysInMonths = new int[12];
     String[] monthNames = {
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
     };
 
     width = 8;
