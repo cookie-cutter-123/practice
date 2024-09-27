@@ -2,7 +2,7 @@ package net.loncarevic;
 
 public class App {
   public static void main(String[] args) {
-    primitiveDataTypes();
+    loopsLab3();
   }
 
   public static void primitiveDataTypes() {
@@ -55,6 +55,38 @@ public class App {
 
     for (int i = 0; i < daysInMonths.length; i++) {
       System.out.println(monthNames[i] + " has " + daysInMonths[i] + " days.");
+    }
+  }
+
+  public static void loopsLab3() {
+    String[] daysOfWeek = {
+      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+    };
+
+    for (int i = 0; i < daysOfWeek.length; i++) {
+      System.out.println(daysOfWeek[i]);
+    }
+
+    for (String days : daysOfWeek) {
+      System.out.println(days);
+    }
+
+    for (int i = daysOfWeek.length - 1; i >= 0; i--) {
+      System.out.println(daysOfWeek[i]);
+    }
+
+    int count = 0;
+    while (count <= 20) {
+      count++;
+      if (count % 2 == 1) {
+        continue;
+      }
+      System.out.println(count);
+    }
+
+    for (int i = 0; i <= 100; i++) {
+      if (i == 50) i = 61;
+      System.out.println(i);
     }
   }
 }
