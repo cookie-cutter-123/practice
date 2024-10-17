@@ -8,14 +8,14 @@ import (
 
 var globalVariable = "I am a global variable"
 
-func main()  {
+func main() {
 	//basics()
 	//types("Igor", 31)
 	//printNumbersButSkip3(6)
 	arraysPractice()
 }
 
-func basics () {
+func basics() {
 	// Println with variables
 	var greeting = "Hello"
 	var nameIgor = "Igor"
@@ -95,4 +95,13 @@ func arraysPractice() {
 	fmt.Println(len(elements))
 	// Print the element on the second index of the array
 	fmt.Println(elements[1])
+
+	// Iterate over an array using range
+	for index, element := range grades {
+		fmt.Println(index, "=>", element)
+	}
+
+	// Two-dimensional array
+	arr := [3][2]int{{1, 2}, {3, 4}, {5, 6}}
+	fmt.Println(arr[2][1])
 }
