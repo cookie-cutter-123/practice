@@ -12,7 +12,8 @@ func main() {
 	//basics()
 	//types("Igor", 31)
 	//printNumbersButSkip3(6)
-	arraysPractice()
+	//arraysPractice()
+	slicesPractice()
 }
 
 func basics() {
@@ -104,4 +105,54 @@ func arraysPractice() {
 	// Two-dimensional array
 	arr := [3][2]int{{1, 2}, {3, 4}, {5, 6}}
 	fmt.Println(arr[2][1])
+}
+
+func slicesPractice() {
+	// In slices, variables can be added or removed
+	// A slice has a pointer to the first element, length and capacity
+
+	// Declare a slice
+	slice := []int{1, 2, 3, 4, 5}
+	fmt.Println(slice)
+
+	// Declare an array and slice it
+	arr := [5]int{1, 2, 3, 4, 5}
+	slice1 := arr[1:3]
+	fmt.Println(slice1)
+
+	// If we change an element in the slice, the original array is changed
+	slice1[0] = 100
+	fmt.Println("Array is", arr)
+	fmt.Println("Slice is", slice1)
+
+	// Create a slice of a slice
+	subSlice := slice1[:1]
+	fmt.Println(subSlice)
+
+	// Declaring a slice using make
+	slice2 := make([]int, 5, 10) // (type, length, capacity)
+	fmt.Println(slice2)
+	fmt.Printf("Length is %d; capacity is %d\n", len(slice2), cap(slice2))
+
+	// Append to a slice
+	slice2 = append(slice2, 1, 2, 3)
+	fmt.Println(slice2)
+
+	// Append a slice to a slice
+	slice2 = append(slice2, slice1...)
+	fmt.Println(slice2)
+
+	// Delete using append and slicing
+	arr1 := []int{1, 2, 3, 4, 5}
+	i := 2 // index to delete
+	arr1 = append(arr1[:i], arr1[i+1:]...)
+	fmt.Println(arr1)
+
+	// Copy a slice
+	fmt.Println("Copy a slicep")
+	srcSlice := []int{10, 20, 30, 40, 50}
+	destSlice := make([]int, 3)
+	num := copy(destSlice, srcSlice)
+	fmt.Println(destSlice)
+	fmt.Println("Number of elements copied:", num)
 }
