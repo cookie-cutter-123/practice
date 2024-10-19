@@ -13,7 +13,8 @@ func main() {
 	//types("Igor", 31)
 	//printNumbersButSkip3(6)
 	//arraysPractice()
-	slicesPractice()
+	//slicesPractice()
+	mapsPractice()
 }
 
 func basics() {
@@ -155,4 +156,30 @@ func slicesPractice() {
 	num := copy(destSlice, srcSlice)
 	fmt.Println(destSlice)
 	fmt.Println("Number of elements copied:", num)
+}
+
+func mapsPractice() {
+	// Declare a map
+	var names = map[int]string{1: "Igor", 2: "Joe"}
+	fmt.Println(names)
+
+	// Declare a map using make
+	myMap1 := make(map[string]int, 3)
+	fmt.Println("Length if the map is ", len(myMap1))
+	myMap1["blah blah"] = 17
+	fmt.Println(myMap1["blah blah"])
+	fmt.Println("Length if the map is ", len(myMap1))
+
+	// Getting a key
+	value, found := myMap1["blah blah"]
+	fmt.Println(value, found) // If the key is not found, the value is the zero value of the type
+
+	// Delete a key
+	delete(myMap1, "blah blah")
+	fmt.Println(myMap1)
+
+	// Iterate over a map
+	for key, value := range names {
+		fmt.Println(key, "=>", value)
+	}
 }
