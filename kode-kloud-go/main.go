@@ -14,7 +14,8 @@ func main() {
 	//printNumbersButSkip3(6)
 	//arraysPractice()
 	//slicesPractice()
-	mapsPractice()
+	//mapsPractice()
+	functionsPractice()
 }
 
 func basics() {
@@ -181,5 +182,40 @@ func mapsPractice() {
 	// Iterate over a map
 	for key, value := range names {
 		fmt.Println(key, "=>", value)
+	}
+}
+
+func functionsPractice() {
+	sum, diff := operation(10, 5)
+	fmt.Println("Sum is", sum, "and difference is", diff)
+
+	// Blank identifier
+	_, diff1 := operation(10, 5)
+	fmt.Println("Difference is", diff1)
+
+	fmt.Println(sumOfNumbers(1, 2, 3, 4, 5))
+	printDetails("Igor", "Math", "Science", "English")
+}
+
+func operation(a int, b int) (sum int, diff int)  {
+	sum = a + b
+	diff = a - b
+	return // Return statement without arguments
+}
+
+// Variadic function
+func sumOfNumbers(numbers ...int) int {
+	result := 0
+	for _, num := range numbers {
+		result += num
+	}
+	return result
+}
+
+// Variadic function
+func printDetails(student string, subjects ...string) {
+	fmt.Printf("Student %s follows subjects: \n", student)
+	for _, subject := range subjects {
+		fmt.Println(subject)
 	}
 }
