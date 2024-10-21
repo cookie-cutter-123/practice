@@ -13,7 +13,9 @@ func main() {
 	//types("Igor", 31)
 	//printNumbersButSkip3(6)
 	//arraysPractice()
-	slicesPractice()
+	//slicesPractice()
+	//mapsPractice()
+	functionsPractice()
 }
 
 func basics() {
@@ -155,4 +157,65 @@ func slicesPractice() {
 	num := copy(destSlice, srcSlice)
 	fmt.Println(destSlice)
 	fmt.Println("Number of elements copied:", num)
+}
+
+func mapsPractice() {
+	// Declare a map
+	var names = map[int]string{1: "Igor", 2: "Joe"}
+	fmt.Println(names)
+
+	// Declare a map using make
+	myMap1 := make(map[string]int, 3)
+	fmt.Println("Length if the map is ", len(myMap1))
+	myMap1["blah blah"] = 17
+	fmt.Println(myMap1["blah blah"])
+	fmt.Println("Length if the map is ", len(myMap1))
+
+	// Getting a key
+	value, found := myMap1["blah blah"]
+	fmt.Println(value, found) // If the key is not found, the value is the zero value of the type
+
+	// Delete a key
+	delete(myMap1, "blah blah")
+	fmt.Println(myMap1)
+
+	// Iterate over a map
+	for key, value := range names {
+		fmt.Println(key, "=>", value)
+	}
+}
+
+func functionsPractice() {
+	sum, diff := operation(10, 5)
+	fmt.Println("Sum is", sum, "and difference is", diff)
+
+	// Blank identifier
+	_, diff1 := operation(10, 5)
+	fmt.Println("Difference is", diff1)
+
+	fmt.Println(sumOfNumbers(1, 2, 3, 4, 5))
+	printDetails("Igor", "Math", "Science", "English")
+}
+
+func operation(a int, b int) (sum int, diff int)  {
+	sum = a + b
+	diff = a - b
+	return // Return statement without arguments
+}
+
+// Variadic function
+func sumOfNumbers(numbers ...int) int {
+	result := 0
+	for _, num := range numbers {
+		result += num
+	}
+	return result
+}
+
+// Variadic function
+func printDetails(student string, subjects ...string) {
+	fmt.Printf("Student %s follows subjects: \n", student)
+	for _, subject := range subjects {
+		fmt.Println(subject)
+	}
 }
