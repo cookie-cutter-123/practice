@@ -8,6 +8,16 @@ _____
 ## Go 
 practice/kode-kloud-go
 
+#### Run main.go
+```bash
+cd kode-kloud-go
+go run .
+```
+or
+```bash
+go run ./kode-kloud-go
+``` 
+
 #### Linter
 ```bash
 make -f kode-kloud-go/Makefile lint
