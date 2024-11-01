@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func functionsPractice() {
 	sum, diff := operation(10, 5)
@@ -60,3 +62,24 @@ func factorial(n int) int {
 	return n * factorial(n-1)
 }
 
+// High order function - function that accepts another function as an argument, or returns a function,
+// but I won't implement it here.
+
+// A defer statement delays the execution of a function until the surrounding function returns.
+func printName(name string) {
+	fmt.Println(name)
+}
+
+func printRolNo(rolNo int) {
+	fmt.Println(rolNo)
+}
+
+func printAddress(address string) {
+	fmt.Println(address)
+}
+
+func deferPractice() {
+	printName("Igor")
+	defer printRolNo(123)
+	printAddress("Strawberry Fields")
+}

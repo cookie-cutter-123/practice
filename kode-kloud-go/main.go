@@ -4,6 +4,7 @@ var globalVariable = "I am a global variable"
 
 func main() {
 	//basicsPractice()
-	functionsPractice()
+	//functionsPractice()
+	deferPractice()
 }
 
