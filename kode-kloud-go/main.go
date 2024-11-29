@@ -6,5 +6,6 @@ func main() {
 	//basicsPractice()
 	//functionsPractice()
 	//deferPractice()
-	pointersPractice()
+	//pointersPractice()
+	structsPractice()
 }
