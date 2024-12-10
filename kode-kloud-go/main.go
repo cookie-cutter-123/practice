@@ -7,5 +7,7 @@ func main() {
 	//functionsPractice()
 	//deferPractice()
 	//pointersPractice()
-	structsPractice()
+	//structsPractice()
+	//methodsPractice()
+	interfacePractice()
 }
