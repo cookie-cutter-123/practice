@@ -8,7 +8,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <spotless.version>2.44.0.BETA4</spotless.version>
+    <spotless.version>2.44.2</spotless.version>
     <junit.version>5.11.0</junit.version>
   </properties>
   <modules>
