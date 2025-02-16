@@ -10,7 +10,8 @@ public class App {
     //    romanToInt("MCMXCIV");
     //    romanToInt("III");
     //    System.out.println(isValid("{}"));
-    System.out.println(isPalindrome(1234321));
+    //    System.out.println(isPalindrome(1234321));
+    System.out.println(breakPalindrome("aba"));
   }
 
   static int romanToInt(String s) {
@@ -64,5 +65,20 @@ public class App {
     System.out.println(first + "\t" + second);
 
     return first.contentEquals(second);
+  }
+
+  public static String breakPalindrome(String palindrome) {
+    int len = palindrome.length();
+
+    if (len < 2) return "";
+
+    // Change first non-a occurrence
+    for (int i = 0; i < len / 2; i++) {
+      if (palindrome.charAt(i) != 'a')
+        return palindrome.substring(0, i) + 'a' + palindrome.substring(i + 1);
+    }
+
+    // If all characters are 'a', change the last one to 'b';
+    return palindrome.substring(0, len - 1) + 'b';
   }
 }
