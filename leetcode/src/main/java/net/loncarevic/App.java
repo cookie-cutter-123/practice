@@ -93,7 +93,13 @@ public class App {
       sum += Math.max(prices.get(i) - min, 0);
       min = Math.min(prices.get(i), min);
 
-      System.out.println("Item: " + prices.get(i) + ", Min so far: " + min + ", Discount: " + (prices.get(i) - min));
+      System.out.println(
+          "Item: "
+              + prices.get(i)
+              + ", Min so far: "
+              + min
+              + ", Discount: "
+              + (prices.get(i) - min));
     }
     return sum;
   }
