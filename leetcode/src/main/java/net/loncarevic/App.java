@@ -1,6 +1,7 @@
 package net.loncarevic;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /** Hello world! */
@@ -11,7 +12,8 @@ public class App {
     //    romanToInt("III");
     //    System.out.println(isValid("{}"));
     //    System.out.println(isPalindrome(1234321));
-    System.out.println(breakPalindrome("aba"));
+    //    System.out.println(breakPalindrome("aba"));
+    System.out.println(calculateAmount(List.of(2, 5, 1, 4)));
   }
 
   static int romanToInt(String s) {
@@ -67,6 +69,7 @@ public class App {
     return first.contentEquals(second);
   }
 
+  // https://leetcode.com/problems/break-a-palindrome/
   public static String breakPalindrome(String palindrome) {
     int len = palindrome.length();
 
@@ -80,5 +83,24 @@ public class App {
 
     // If all characters are 'a', change the last one to 'b';
     return palindrome.substring(0, len - 1) + 'b';
+  }
+
+  // Hackerrank, but there are similar on leetcode
+  public static long calculateAmount(List<Integer> prices) {
+    int sum = prices.getFirst();
+    int min = prices.getFirst();
+    for (int i = 1; i < prices.size(); i++) {
+      sum += Math.max(prices.get(i) - min, 0);
+      min = Math.min(prices.get(i), min);
+
+      System.out.println(
+          "Item: "
+              + prices.get(i)
+              + ", Min so far: "
+              + min
+              + ", Discount: "
+              + (prices.get(i) - min));
+    }
+    return sum;
   }
 }
