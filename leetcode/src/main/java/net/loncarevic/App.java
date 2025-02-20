@@ -1,8 +1,6 @@
 package net.loncarevic;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /** Hello world! */
 public class App {
@@ -13,7 +11,9 @@ public class App {
     //    System.out.println(isValid("{}"));
     //    System.out.println(isPalindrome(1234321));
     //    System.out.println(breakPalindrome("aba"));
-    System.out.println(calculateAmount(List.of(2, 5, 1, 4)));
+    //    System.out.println(calculateAmount(List.of(2, 5, 1, 4)));
+    //    System.out.println(teams("fer4"));
+    System.out.println(removeDuplicates(new int[] {1, 2, 2, 2, 3, 3, 4, 4}));
   }
 
   static int romanToInt(String s) {
@@ -85,7 +85,7 @@ public class App {
     return palindrome.substring(0, len - 1) + 'b';
   }
 
-  // Hackerrank, but there are similar on leetcode
+  // Hackerrank (Fivetran), but there are similar on leetcode
   public static long calculateAmount(List<Integer> prices) {
     int sum = prices.getFirst();
     int min = prices.getFirst();
@@ -102,5 +102,61 @@ public class App {
               + (prices.get(i) - min));
     }
     return sum;
+  }
+
+  /*
+  Hackerrank (Fivetran)
+  The School of Languages and Science teaches five subjects: Physics, Chemistry, Math, Botany, and Zoology.
+  Each student is skilled in one subject. The skills of the students are described by string of named skills
+  that consists of the letters p, c, m, b, and z only. Each character describes the skill of a student.
+  Given a list of students' skills, determine the total number of different teams satisfying the following constraints:
+  - A team consists of a group of exactly five students.
+  - Each student is skilled in a different subject.
+  - A student may only be on one team.
+  */
+  public static int teams(String skills) {
+    // p, c, m, b, z
+    int len = skills.length();
+    if (len < 5) return 0;
+    int countP = 0;
+    int countC = 0;
+    int countM = 0;
+    int countB = 0;
+    int countZ = 0;
+
+    for (int i = 0; i < len; i++) {
+      if (skills.charAt(i) == 'p') {
+        countP++;
+      }
+      if (skills.charAt(i) == 'c') {
+        countC++;
+      }
+      if (skills.charAt(i) == 'm') {
+        countM++;
+      }
+      if (skills.charAt(i) == 'b') {
+        countB++;
+      }
+      if (skills.charAt(i) == 'z') {
+        countZ++;
+      }
+    }
+
+    return Collections.min(Arrays.asList(countP, countC, countM, countB, countZ));
+  }
+
+  // https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/727/
+  public static int removeDuplicates(int[] nums) {
+    int len = nums.length;
+    if (len == 0) return 0;
+    int j = 0;
+    for (int i = 0; i < len - 1; i++) {
+      if (nums[i] != nums[i + 1]) {
+        nums[j] = nums[i];
+        j++;
+      }
+    }
+    nums[j] = nums[len - 1];
+    return j + 1;
   }
 }
